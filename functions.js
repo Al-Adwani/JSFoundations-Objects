@@ -76,18 +76,12 @@ function getChannelByName(channelName, channels) {
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
-  const iterator = channels.values();
-  let newArray = [];
-  for (const value of iterator) {
-    newArray.push(value.videos);
-  }
-  console.log(newArray);
-
-
-function equalTitle(element) {
-  return element.title === videoTitle;
-}
-console.log(newArray.find(equalTitle)) 
+  
+  return channels.find((element) =>
+    element.videos.find((element) => element.title === videoTitle)
+    
+  );
+  
 }
 
 console.log(getChannelByVideoTitle("The Universal S", channels));
