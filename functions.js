@@ -26,7 +26,7 @@ function getChannelName(channel) {
  ****************************************************************/
 
 function numberOfVideos(channel) {
-  return Object.keys(channel["videos"]).length;
+  return (channel.videos.length);
 }
 
 //console.log(numberOfVideos(channels[0]));
@@ -41,13 +41,10 @@ function numberOfVideos(channel) {
  * BONUS: use iteration method `.some()`
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
-  if (videoTitle === channel["videos"]) {
-    return true;
-  }
-  return true;
+  return channel.videos.some(element => element.title === videoTitle)
 }
-/* console.log(channelHasVideo("The Universal S", channels[0]));
-console.log(channelHasVideo("The Universal S", channels[1])); */
+ console.log(channelHasVideo("The Universal S", channels[0]));
+console.log(channelHasVideo("The Universal S", channels[1])); 
 
 /**************************************************************
  * getChannelByName(channelName, channels):
@@ -76,15 +73,12 @@ function getChannelByName(channelName, channels) {
  * BONUS: use iteration methods `.find()` and `.some()`
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
-  
   return channels.find((element) =>
     element.videos.find((element) => element.title === videoTitle)
-    
   );
-  
 }
 
-console.log(getChannelByVideoTitle("The Universal S", channels));
+//console.log(getChannelByVideoTitle("The Universal S", channels));
 
 /**************************************************************
  * searchChannels(query, channels):
@@ -95,9 +89,12 @@ console.log(getChannelByVideoTitle("The Universal S", channels));
  * Hint: use string method `.includes()` and iteration method `.filter()`
  ****************************************************************/
 function searchChannels(query, channels) {
-  // Your code here
+  return channels.filter(
+    (element) =>
+      element.description.includes(query) || element.name.includes(query)
+  );
 }
-// console.log(searchChannels("the", channels))
+//console.log(searchChannels("the", channels));
 
 module.exports = {
   getChannelName,
